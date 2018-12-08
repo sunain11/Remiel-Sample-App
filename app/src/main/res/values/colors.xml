@@ -3,4 +3,42 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorTransparent">#00ffffff</color>
+    <color name="bg_purple">#af1f6a</color>
+    <color name="bg_yellow">#FFCC00</color>
+    <color name="colorStart">#cb5ed9</color>
+    <color name="colorEnd">#8463d4</color>
+    <color name="blue">#0D47A1</color>
+    <color name="lblue">#87CEFA</color>
+    <color name="transwhite">#80FFFFFF</color>
+    <color name="lightshade">#72DCB7</color>
+    <color name="lightboundary">#E2F5EE</color>
+    <color name="darkboundary">#6E837B</color>
+    <color name="black">#000000</color>
+    <color name="White">#FFFFFF</color>
+    <color name="colorPrimaryText">#333333</color>
+    <color name="colorSecondaryText">#7f7f7f</color>
+    <color name="divider">#BDBDBD</color>
+    <!--<color name="colorAccent">#8BDD88</color>-->
+    <color name="red3">#cd0000</color>
+    <color name="grey_200">#EEEEEE</color>
+    <color name="grey_500">#a4a4a4</color>
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_800">#212121</color>
+
+    <array name="colors">
+        <item name="all" type="color">#827f93</item>
+        <item name="design" type="color">#c467f4</item>
+        <item name="ios" type="color">#3b9aee</item>
+        <item name="android" type="color">#9bc53d</item>
+        <item name="web" type="color">#f4a261</item>
+        <item name="business" type="color">#1ed2bb</item>
+        <item name="research" type="color">#778da9</item>
+        <item name="sales" type="color">#20bf55</item>
+        <item name="quality" type="color">#9f9fed</item>
+        <item name="customer" type="color">#fc6177</item>
+
+    </array>
+
 </resources>
