@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">SampleApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <array name="menuOptions">
+        <item>Home</item>
+        <item>Upload Product</item>
+        <item>Product List</item>
+        <item>Exit</item>
+    </array>
 </resources>
