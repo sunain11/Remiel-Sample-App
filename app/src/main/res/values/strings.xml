@@ -9,4 +9,10 @@
         <item>Product List</item>
         <item>Exit</item>
     </array>
+    <array name="spinnerItems">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>item4</item>
+    </array>
 </resources>

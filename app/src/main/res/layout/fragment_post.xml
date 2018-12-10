@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!--Created by Sunain Mittal on 1/1/2018.-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/transparent">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload"
+            android:id="@+id/textview"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginTop="5dp"/>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:id="@+id/ShowImageView"
+            android:layout_below="@+id/textview"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ButtonChooseImage"
+            android:layout_below="@+id/ShowImageView"
+            android:layout_marginTop="20dp"
+            android:text="Choose Image"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ImagetitleEditText"
+            android:layout_below="@+id/ButtonChooseImage"
+            android:layout_marginTop="20dp"
+            android:hint="Enter Title here"
+            android:gravity="center"/>
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ImagecontentEditText"
+            android:layout_below="@+id/ImagetitleEditText"
+            android:layout_marginTop="20dp"
+            android:hint="Enter content here"
+            android:gravity="center"/>
+
+        <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+            android:id="@+id/SearchableSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_below="@id/ImagecontentEditText"
+            android:gravity="center_horizontal"
+            StartSearchTintColor="@android:color/white"
+            DoneSearchTintColor="@android:color/holo_purple"
+            RevealViewBackgroundColor="@android:color/holo_purple"
+            SearchViewBackgroundColor="@android:color/secondary_text_dark"
+            ShowBorders="true"
+            android:visibility="gone"
+            android:entries="@array/spinnerItems"
+            RevealEmptyText="Touch to select"
+            SpinnerExpandHeight="300dp"
+            ItemsDivider="@color/grey_500"
+            DividerHeight="0.5dp"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ButtonUploadImage"
+            android:layout_below="@+id/SearchableSpinner"
+            android:layout_marginTop="20dp"
+            android:text="Upload"/>
+    </RelativeLayout>
+</ScrollView>
+</RelativeLayout>
