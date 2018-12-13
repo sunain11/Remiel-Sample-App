@@ -4,7 +4,7 @@
     <item
         android:id="@+id/action_add_favourite"
         android:orderInCategory="100"
-        android:title="action_add_favourite" />
+        android:title="Delete" />
 
     <!--<item-->
         <!--android:id="@+id/action_play_next"-->

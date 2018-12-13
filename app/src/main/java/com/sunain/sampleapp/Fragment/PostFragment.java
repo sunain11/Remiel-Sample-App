@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -69,9 +70,10 @@ public class PostFragment extends Fragment {
     Context applicationContext;
     ProgressDialog progressDialog ;
     int GALLERY = 1,CAMERA=2;
-    private SearchableSpinner mSearchableSpinner;
-    private ProductTypeListAdapter mSimpleListAdapter;
+    private SearchableSpinner mSearchableSpinner,mSearchableSpinner2;
+    private ProductTypeListAdapter mSimpleListAdapter,mSimpleListAdapter2;
     private final ArrayList<String> mStrings = new ArrayList<>();
+    private final ArrayList<String> mStrings2 = new ArrayList<>();
     public PostFragment() {
     }
 
@@ -94,30 +96,28 @@ public class PostFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         initListValues();
         mSimpleListAdapter = new ProductTypeListAdapter(getApplicationContext(), mStrings);
+        mSimpleListAdapter2 = new ProductTypeListAdapter(getApplicationContext(), mStrings2);
         mSearchableSpinner = rootView.findViewById(R.id.SearchableSpinner);
         mSearchableSpinner.setAdapter(mSimpleListAdapter);
         mSearchableSpinner.setOnItemSelectedListener(mOnItemSelectedListener);
-        mSearchableSpinner.setStatusListener(new IStatusListener() {
-            @Override
-            public void spinnerIsOpening() {
-            }
-
-            @Override
-            public void spinnerIsClosing() {
-
-            }
-        });
+        mSearchableSpinner2 = rootView.findViewById(R.id.SearchableSpinner2);
+        mSearchableSpinner2.setAdapter(mSimpleListAdapter2);
+        mSearchableSpinner2.setOnItemSelectedListener(mOnItemSelectedListener2);
+//        mSearchableSpinner.setStatusListener(new IStatusListener() {
+//            @Override
+//            public void spinnerIsOpening() {
+//            }
+//
+//            @Override
+//            public void spinnerIsClosing() {
+//
+//            }
+//        });
 
         ChooseButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
-
-
-
-
                 String[] colors = {"Camera", "gallery"};
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
                 builder.setTitle("Pick an option");
                 builder.setItems(colors, new DialogInterface.OnClickListener() {
@@ -155,33 +155,107 @@ public class PostFragment extends Fragment {
     private OnItemSelectedListener mOnItemSelectedListener = new OnItemSelectedListener() {
         @Override
         public void onItemSelected(View view, int position, long id) {
-            Toast.makeText(getApplicationContext(), "Item on position " + position + " : " + mSimpleListAdapter.getItem(position) + " Selected", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Item on position " + position + " : " + mSimpleListAdapter.getItem(position) + " Selected", Toast.LENGTH_SHORT).show();
+            mSearchableSpinner2.setSelectedItem(0);
+            if(position==1)
+            {
+                initList1();
+            }
+            if (position==2)
+            {
+                initList2();
+            }
+            if (position==3)
+            {
+                initList3();
+            }
+            if (position==4)
+            {
+                initList4();
+            }
         }
 
         @Override
         public void onNothingSelected() {
-            Toast.makeText(getApplicationContext(), "Nothing Selected", Toast.LENGTH_SHORT).show();
+            Toasty.info(getApplicationContext(), "Please Select From Option", Toast.LENGTH_SHORT).show();
+        }
+    };
+    private OnItemSelectedListener mOnItemSelectedListener2 = new OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(View view, int position, long id) {
+//            Toast.makeText(getApplicationContext(), "Item on position " + position + " : " + mSimpleListAdapter.getItem(position) + " Selected", Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onNothingSelected() {
+            Toasty.info(getApplicationContext(), "Please Select From Option", Toast.LENGTH_SHORT).show();
         }
     };
     private void initListValues()
     {
-        mStrings.add("Brigida Kurz");
-        mStrings.add("Tracy Mckim");
-        mStrings.add("Iesha Davids");
-        mStrings.add("Ozella Provenza");
-        mStrings.add("Florentina Carriere");
-        mStrings.add("Geri Eiler");
-        mStrings.add("Tammara Belgrave");
-        mStrings.add("Ashton Ridinger");
-        mStrings.add("Jodee Dawkins");
-        mStrings.add("Florine Cruzan");
-        mStrings.add("Latia Stead");
-        mStrings.add("Kai Urbain");
-        mStrings.add("Liza Chi");
-        mStrings.add("Clayton Laprade");
-        mStrings.add("Wilfredo Mooney");
-        mStrings.add("Roseline Cain");
+        mStrings.add("DePuy");
+        mStrings.add("Zimmer Biomet");
+        mStrings.add("Smith & Nephew");
+        mStrings.add("ConforMIS");
+//        mStrings.add("Florentina Carriere");
+//        mStrings.add("Geri Eiler");
+//        mStrings.add("Tammara Belgrave");
+//        mStrings.add("Ashton Ridinger");
+//        mStrings.add("Jodee Dawkins");
+//        mStrings.add("Florine Cruzan");
+//        mStrings.add("Latia Stead");
+//        mStrings.add("Kai Urbain");
+//        mStrings.add("Liza Chi");
+//        mStrings.add("Clayton Laprade");
+//        mStrings.add("Wilfredo Mooney");
+//        mStrings.add("Roseline Cain");
     }
+    private void initList1()
+    {
+        mStrings2.clear();
+        mStrings2.add("PFC Sigma Bicondylar Knee");
+        mStrings2.add("Attune CR");
+        mStrings2.add("Attune PS");
+        mStrings2.add("LCS Complete");
+        mStrings2.add("Attune Revision");
+        mStrings2.add("LCS Revision");
+        mStrings2.add("LCS Knee");
+        mStrings2.add("LCS Complete Revision");
+        mSimpleListAdapter2.notifyDataSetChanged();
+    }
+    private void initList2()
+    {
+        mStrings2.clear();
+        mStrings2.add("Nextgen");
+        mStrings2.add("Vangaurd");
+        mStrings2.add("AGC");
+        mStrings2.add("AGC V2");
+        mStrings2.add("Persona CR");
+        mStrings2.add("Nextgen VCCK");
+        mStrings2.add("Vangaurd XP");
+        mStrings2.add("LCS Knee");
+        mSimpleListAdapter2.notifyDataSetChanged();
+    }
+    private void initList3()
+    {
+        mStrings2.clear();
+        mStrings2.add("Genesis 2");
+        mStrings2.add("Genesis II Oxinium");
+        mStrings2.add("Journey II BCS Oxinium");
+        mStrings2.add("TC Plus");
+        mStrings2.add("Journey II CR Oxinium");
+        mStrings2.add("Legion Oxinium");
+        mSimpleListAdapter2.notifyDataSetChanged();
+    }
+    private void initList4()
+    {
+        mStrings2.clear();
+        mStrings2.add("iTotal G2");
+        mStrings2.add("iTotal G2 XE");
+        mSimpleListAdapter2.notifyDataSetChanged();
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -207,14 +281,15 @@ public class PostFragment extends Fragment {
         if (requestCode == CAMERA && resultCode == RESULT_OK && data != null && data.getData() != null) {
             FilePathUri = data.getData();
             try {
+//                Glide.with(getApplicationContext()).load(FilePathUri.getPath()).into(SelectImage);
                 Bundle extras = data.getExtras();
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
                 Uri tempUri = getImageUri(getApplicationContext(), imageBitmap);
                 Bitmap myBitmap = BitmapFactory.decodeFile(getRealPathFromURI(tempUri));
 //                Picasso.with(getApplicationContext()).load(FilePathUri).into(SelectImage);
                 SelectImage.setImageBitmap(myBitmap);
-//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(applicationContext.getContentResolver(), FilePathUri);
-//                SelectImage.setImageBitmap(bitmap);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(applicationContext.getContentResolver(), FilePathUri);
+                SelectImage.setImageBitmap(bitmap);
                 ChooseButton.setText("Image Selected");
             }
             catch (Exception e) {
@@ -222,6 +297,28 @@ public class PostFragment extends Fragment {
                 e.printStackTrace();
             }
         }
+        else
+            {
+                Log.e(TAG,"Intent blocked");
+                FilePathUri = data.getData();
+                try {
+//                Glide.with(getApplicationContext()).load(FilePathUri.getPath()).into(SelectImage);
+                    Bundle extras = data.getExtras();
+                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+                    Uri tempUri = getImageUri(getApplicationContext(), imageBitmap);
+                    FilePathUri=tempUri;
+                    Bitmap myBitmap = BitmapFactory.decodeFile(getRealPathFromURI(tempUri));
+//                Picasso.with(getApplicationContext()).load(FilePathUri).into(SelectImage);
+                    SelectImage.setImageBitmap(myBitmap);
+//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(applicationContext.getContentResolver(), FilePathUri);
+//                    SelectImage.setImageBitmap(bitmap);
+                    ChooseButton.setText("Image Selected");
+                }
+                catch (Exception e) {
+                    Log.e(TAG,e.toString());
+                    e.printStackTrace();
+                }
+            }
         SelectImage.setVisibility(View.VISIBLE);
 
     }
@@ -246,6 +343,26 @@ public class PostFragment extends Fragment {
 
     }
     public void UploadImageFileToFirebaseStorage() {
+        if(mSearchableSpinner.getSelectedItem()==null)
+        {
+            Toasty.error(getApplicationContext(),"Select Manufacturer",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(mSearchableSpinner2.getSelectedItem()==null)
+        {
+            Toasty.error(getApplicationContext(),"Select Brand",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(mSearchableSpinner.getSelectedPosition()==0||mSearchableSpinner.getSelectedItem().toString().length()==0)
+        {
+            Toasty.error(getApplicationContext(),"Select Manufacturer",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(mSearchableSpinner2.getSelectedPosition()==0||mSearchableSpinner2.getSelectedItem().toString()==null||mSearchableSpinner2.getSelectedItem().toString().length()==0)
+        {
+            Toasty.error(getApplicationContext(),"Select Brand",Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (FilePathUri != null) {
 
             Utils utils = new Utils(getActivity());
@@ -278,8 +395,10 @@ public class PostFragment extends Fragment {
                     if (task.isSuccessful()){
                         Uri downUri = task.getResult();
                         Log.d(TAG, "onComplete: Url: "+ downUri.toString());
-                        String TempImageName = Imagetitle.getText().toString().trim();
-                        String TempImageTitle = Imagecontent.getText().toString().trim();
+//                        String TempImageName = Imagetitle.getText().toString().trim();
+                        String TempImageName = mSearchableSpinner.getSelectedItem().toString().trim();
+//                        String TempImageTitle = Imagecontent.getText().toString().trim();
+                        String TempImageTitle = mSearchableSpinner2.getSelectedItem().toString().trim();
                         progressDialog.dismiss();
 //                            Reactiondialog ld=new Reactiondialog(getActivity(), Reactor.rectionimg(5),"Post Uploaded Successfully ");
 //                            ld.show();
